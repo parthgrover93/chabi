@@ -1,0 +1,64 @@
+/* Background container */
+.testimonial-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #e8f8e8;
+    padding: 40px;
+    gap: 20px;
+    overflow-x: auto;
+  }
+  
+  /* Card styling */
+  .testimonial-card {
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 300px;
+    min-width: 280px;
+    text-align: center;
+    position: relative;
+  }
+  
+  /* Company name */
+  .company-name {
+    font-weight: bold;
+    color: gray;
+    font-size: 1.5rem;
+  }
+  
+  /* Feedback */
+  .feedback {
+    margin: 10px 0;
+    color: #444;
+    font-size: 1rem;
+  }
+  
+  /* Profile section */
+  .profile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 15px;
+    gap: 10px;
+  }
+  
+  .profile-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  /* Profile name and designation */
+  .profile-name {
+    font-weight: 600;
+    margin: 0;
+  }
+  
+  .profile-designation {
+    color: #777;
+    margin: 0;
+  }
+  
