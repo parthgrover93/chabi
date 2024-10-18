@@ -1,77 +1,81 @@
 .hero {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 50px;
-    background-color: #0d1f16; /* Use the same background color */
-    color: #fff;
-  }
-  
-  .hero-content h1 {
-    font-size: 3rem;
-    font-weight: 700;
-    line-height: 1.2;
-  }
-  
-  .highlight {
-    color: #a3f573;
-  }
-  
-  .hero-btn {
-    margin-top: 20px;
-    padding: 15px 40px;
-    background-color: #a3f573;
-    color: #000;
-    border: none;
-    border-radius: 30px;
-    font-size: 1rem;
-  }
-  
-  .hero-cards {
-    display: flex;
-    gap: 20px;
-  }
-  
-  .card {
-    background-color: rgba(27, 43, 34, 0.8); /* Slightly transparent background */
-    padding: 20px;
-    border-radius: 20px;
-    color: #fff;
-    width: 200px;
-    height: 200px; /* Fixed height for uniformity */
-    background-size: cover; /* Cover to maintain aspect ratio */
-    background-position: center; /* Center the image */
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end; /* Align text to bottom */
-  }
-  
-  .card h2 {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
-  }
-  
-  .card p {
-    font-size: 0.9rem;
-  }
-  .card {
-    background-color: rgba(27, 43, 34, 0.8); /* Slightly transparent background */
-    padding: 20px;
-    border-radius: 20px;
-    color: #fff;
-    width: 200px;
-    height: 200px; /* Fixed height for uniformity */
-    background-size: cover; /* Cover to maintain aspect ratio */
-    background-position: center; /* Center the image */
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end; /* Align text to bottom */
-    transition: transform 0.3s ease; /* Smooth transition for transform */
-    cursor: pointer; /* Change cursor to pointer */
-  }
-  
-  /* Hover effect */
-  .card:hover {
-    transform: scale(1.5); /* Enlarge image slightly on hover */
-  }
-  
+  justify-content: space-between;
+  align-items: center;
+  padding: 50px;
+  background-color: #0d1f16;
+  color: #fff;
+  width: auto;
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.highlight {
+  color: #a3f573;
+}
+
+.hero-btn {
+  margin-top: 20px;
+  padding: 15px 40px;
+  background-color: #a3f573;
+  color: #000;
+  border: none;
+  border-radius: 30px;
+  font-size: 1rem;
+}
+
+.hero-cards {
+  display: flex;
+  gap: 30px; /* Space between cards */
+}
+
+.card {
+  background-color: rgba(27, 43, 34, 0.8);
+  padding: 10px;
+  border-radius: 50px !important;
+  color: #fff;
+  height: 250px !important;
+  width: 100px !important;
+  justify-content: center; /* Center content vertically */
+  align-items: center; /* Center content horizontally */
+  transition: width 0.3s ease; /* Smooth transition for width */
+  overflow: hidden; /* Hide overflow content */
+}
+
+/* Initially hide the description */
+.card p {
+  display: none; /* Hide description in collapsed state */
+}
+
+/* Rotate title for vertical display */
+.card h2 {
+  writing-mode: vertical-rl; /* Rotate title to vertical */
+  transform: rotate(180deg); /* Adjust rotation for correct orientation */
+  font-size: 1rem; /* Smaller font size for initial state */
+  margin: 0; /* Remove margin for better alignment */
+  transition: transform 0.3s ease; /* Smooth transition */
+}
+
+/* Hover effect */
+.card:hover {
+  height: 200px;
+  flex: 1 1 300px; /* Grow and shrink, with a minimum width of 300px */
+  width: 400px !important;
+}
+
+/* Show description on hover */
+.card:hover p {
+  display: block; /* Show description on hover */
+  font-size: 0.8rem; /* Adjust font size */
+  margin-top: 10px; /* Space between title and description */
+}
+
+/* Change title to horizontal and show description on hover */
+.card:hover h2 {
+  transform: rotate(270deg); /* Make title horizontal on hover */
+  margin-top: 2; /* Remove top margin for alignment */
+  align-self: center; /* Align title to the left */
+}
