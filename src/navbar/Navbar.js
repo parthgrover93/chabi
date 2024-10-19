@@ -6,7 +6,7 @@ const Navbar = () => {
 
   return (
     <nav className="navbar">
-      <div className="navbar-logo">
+      <div className="navbar-logo m-3">
         <span>chaabi</span>
       </div>
       <ul className={isMobile ? "nav-links-mobile" : "nav-links"}>
@@ -26,9 +26,13 @@ const Navbar = () => {
           <a href="#">Pricing</a>
         </li>
       </ul>
-      <div className="nav-buttons">
-        <a href="#" className="btn-login">Log in</a>
-        <a href="#" className="btn-try-free">Try chaabi For Free</a>
+      <div className="nav-buttons m-3">
+        <a href="#" className="btn-login">
+          Log in
+        </a>
+        <a href="#" className="btn-try-free">
+          Try chaabi For Free
+        </a>
       </div>
       <div className="menu-toggle" onClick={() => setIsMobile(!isMobile)}>
         <span></span>

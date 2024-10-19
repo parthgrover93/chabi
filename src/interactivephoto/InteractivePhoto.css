@@ -1,0 +1,131 @@
+.interactivephoto-container {
+  padding: 50px;
+}
+
+.pageTitle {
+  font-size: larger;
+}
+
+.btn-design {
+  padding: 15px; /* Increase button size */
+  font-size: 1.4rem; /* Make font larger */
+  background-color: black;
+  margin-top: 20px;
+  color: white;
+  border: none;
+  border-radius: 50px; /* Optional: Adjust border radius */
+  transition: background-color 0.3s; /* Smooth background color change */
+  width: 200px; /* Keep a consistent button width */
+}
+
+.container {
+  text-align: center;
+}
+
+.flex-container {
+  display: flex;
+  align-items: center;
+}
+
+.selector-container {
+  display: flex;
+  flex-direction: column;
+  margin-right: 20px;
+  border-radius: 10%;
+}
+
+.selector {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  margin: 5px 0;
+  border-radius: 50%;
+  cursor: pointer;
+  line-height: 50px;
+  color: white;
+}
+
+.control-button {
+  border: none;
+  border-radius: 50%;
+  margin: 5px 0;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.vertical-bar:hover {
+  border-radius: 50%;
+  background-color: #0056b3; /* Darker on hover */
+}
+
+.sidebar {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.selector.selected {
+  background-color: rgb(129, 214, 114);
+}
+
+.selector.default {
+  background-color: lightgray;
+}
+
+.image {
+  position: relative; /* Ensure that child elements can be positioned relative to this */
+  width: 500px; /* Set a specific width */
+  height: 400px; /* Set a specific height */
+  background-size: cover; /* Cover the entire area */
+  background-position: center; /* Center the image */
+  border-radius: 10%;
+  display: flex; /* Use flexbox to manage layout */
+  flex-direction: column; /* Arrange children vertically */
+  justify-content: end; /* Push content to the bottom */
+  padding: 10px; /* Add some padding for better spacing */
+  align-items: start;
+  color: white; /* Optional: Change text color for better contrast */
+  text-shadow: 1px 1px 2px black; /* Optional: Add shadow for readability */
+}
+.indicator-container {
+  margin-top: 20px;
+  margin: 20px;
+  align-content: center;
+}
+
+.indicator {
+  width: 15px; /* Default width */
+  height: 15px; /* Default height */
+  border-radius: 50%; /* Circular shape */
+  margin: 0 15px; /* Increased spacing between indicators */
+  background-color: gray; /* Default color */
+  cursor: pointer;
+  transition: transform 0.3s ease, width 0.3s ease; /* Add width transition */
+}
+
+.indicator.active {
+  background-color: black; /* Active state color */
+  transform: scale(1.5); /* Slightly enlarge the active indicator */
+  border-radius: 50%; /* Circular shape */
+}
+
+.indicator.inactive {
+  background-color: lightgray;
+}
+
+.scroll-animation {
+  animation: scrollIndicator 0.5s forwards; /* Scroll animation */
+}
+
+@keyframes scrollIndicator {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-10px); /* Move the indicator up */
+  }
+}

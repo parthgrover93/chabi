@@ -4,7 +4,6 @@
   padding: 50px;
   background-color: #0d1f16;
   color: #fff;
-  width: auto;
 }
 
 .hero-content h1 {
@@ -12,19 +11,32 @@
   font-weight: 700;
   line-height: 1.2;
 }
-
-.highlight {
-  color: #a3f573;
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: start; /* Center content horizontally */
 }
 
 .hero-btn {
-  margin-top: 20px;
-  padding: 15px 40px;
+  padding: 15px; /* Increase button size */
+  font-size: 1.4rem; /* Make font larger */
   background-color: #a3f573;
+  margin-top: 20px;
   color: #000;
   border: none;
-  border-radius: 30px;
-  font-size: 1rem;
+  border-radius: 50px; /* Optional: Adjust border radius */
+  transition: background-color 0.3s; /* Smooth background color change */
+  width: 250px; /* Keep a consistent button width */
+}
+
+.cc-info {
+  font-style: italic;
+  font-size: 14px;
+  text-align: center;
+}
+
+.highlight {
+  color: #a3f573;
 }
 
 .hero-cards {
@@ -34,13 +46,14 @@
 
 .card {
   background-color: rgba(27, 43, 34, 0.8);
+  background-size: cover; /* Cover the entire card */
   padding: 10px;
-  border-radius: 50px !important;
+  border-radius: 70px !important;
   color: #fff;
-  height: 250px !important;
-  width: 100px !important;
-  justify-content: center; /* Center content vertically */
-  align-items: center; /* Center content horizontally */
+  height: 400px !important;
+  width: 150px !important;
+  justify-content: flex-end;
+  align-items: center;
   transition: width 0.3s ease; /* Smooth transition for width */
   overflow: hidden; /* Hide overflow content */
 }
@@ -54,28 +67,41 @@
 .card h2 {
   writing-mode: vertical-rl; /* Rotate title to vertical */
   transform: rotate(180deg); /* Adjust rotation for correct orientation */
-  font-size: 1rem; /* Smaller font size for initial state */
-  margin: 0; /* Remove margin for better alignment */
+  font-size: 2rem; /* Smaller font size for initial state */
   transition: transform 0.3s ease; /* Smooth transition */
+  color: #fff;
+}
+
+.card.active {
+  height: 200px;
+  width: 400px !important;
 }
 
 /* Hover effect */
 .card:hover {
   height: 200px;
-  flex: 1 1 300px; /* Grow and shrink, with a minimum width of 300px */
   width: 400px !important;
 }
 
 /* Show description on hover */
+.card.active p,
 .card:hover p {
   display: block; /* Show description on hover */
-  font-size: 0.8rem; /* Adjust font size */
-  margin-top: 10px; /* Space between title and description */
+  font-size: 1rem; /* Adjust font size */
+  color: white;
 }
 
 /* Change title to horizontal and show description on hover */
+.card.active h2,
 .card:hover h2 {
   transform: rotate(270deg); /* Make title horizontal on hover */
-  margin-top: 2; /* Remove top margin for alignment */
-  align-self: center; /* Align title to the left */
+  align-self: start; /* Align title to the left */
+  font-size: 2rem; /* Adjust font size for title */
+  font-weight: bold; /* Make the title bold */
+}
+
+.card img {
+  width: 100%; /* Full width */
+  height: auto; /* Maintain aspect ratio */
+  border-radius: 10px; /* Match card's border radius */
 }

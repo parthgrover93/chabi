@@ -1,16 +1,18 @@
 // App.js
-import React from 'react';
-import './App.css';
-import Navbar from './Navbar'; 
-import HeroSection from './HeroSection'; 
-import Testimonial from './Testimonial';
-import Footer from './Footer';
+import React from "react";
+import "./App.css";
+import Navbar from "./navbar/Navbar";
+import HeroSection from "./herosection/HeroSection";
+import Testimonial from "./testimonials/Testimonial";
+import Footer from "./footer/Footer";
+import InteractivePhoto from "./interactivephoto/interactivephoto";
 
 function App() {
   return (
     <div>
       <Navbar />
       <HeroSection />
+      <InteractivePhoto />
       <Testimonial />
       <Footer />
     </div>
