@@ -11,25 +11,24 @@ const HeroSection = () => {
   const cardData = [
     {
       title: "BUILD",
-      description:
-        "Advanced training with interactive videos, quizzes, & custom learning journeys.",
+      description: "Test Data",
       image: "https://picsum.photos/300/200?random=1",
     },
     {
       title: "START",
-      description: "Engage with interactive content that keeps you involved.",
+      description: "Test Data 2",
       image: "https://picsum.photos/300/200?random=2",
     },
     {
       title: "GROW",
-      description: "Grow your skills and knowledge with our tailored programs.",
+      description: "Test Data 3",
       image: "https://picsum.photos/300/200?random=3",
     },
   ];
 
   return (
     <section className="hero d-flex flex-column flex-md-row bg-dark text-white">
-      <div className="hero-content">
+      <div className="hero-content col-md-4">
         <h1>
           THE HUB <br />
           FOR <span className="highlight">UNLOCKING</span> TRUE POTENTIAL
@@ -44,15 +43,20 @@ const HeroSection = () => {
         {cardData.map((card, index) => (
           <div
             key={index}
-            className={`card ${activeCard === index ? "active" : ""}`}
-            style={{
-              backgroundImage: `url('${card.image}')`,
-            }}
+            className={`hover-area ${activeCard === index ? "active" : ""}`}
             onMouseEnter={() => handleCardHover(index)}
-            onMouseLeave={() => handleCardHover(0)}
+            onMouseLeave={() => handleCardHover(index)}
           >
-            <h2>{card.title}</h2>
-            <p>{card.description}</p>
+            <div
+              className={`card ${activeCard === index ? "active" : ""}`}
+              style={{
+                backgroundImage: `url('${card.image}')`,
+              }}
+            >
+              <h2>{card.title}</h2>
+              <h1>{card.title}</h1>
+              <p>{card.description}</p>
+            </div>
           </div>
         ))}
       </div>

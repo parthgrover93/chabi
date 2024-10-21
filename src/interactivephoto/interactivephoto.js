@@ -5,70 +5,66 @@ const images = [
   [
     {
       title: "BUILD1",
-      description:
-        "Advanced training with interactive videos, quizzes, & custom learning journeys.",
+      description: "Caraousel 1 Content 1",
       image: "https://picsum.photos/300/200?random=1",
     },
     {
       title: "BUILD2",
-      description:
-        "Advanced training with interactive videos, quizzes, & custom learning journeys.",
+      description: "Caraousel 1 Content 2",
       image: "https://picsum.photos/300/200?random=2",
     },
     {
       title: "BUILD3",
-      description:
-        "Advanced training with interactive videos, quizzes, & custom learning journeys.",
+      description: "Caraousel 1 Content 3",
       image: "https://picsum.photos/300/200?random=3",
     },
     {
       title: "BUILD4",
-      description:
-        "Advanced training with interactive videos, quizzes, & custom learning journeys.",
+      description: "Caraousel 1 Content 4",
       image: "https://picsum.photos/300/200?random=4",
     },
   ],
   [
     {
       title: "START1",
-      description: "Engage with interactive content that keeps you involved.",
+      description: "Caraousel 2 Content 1",
       image: "https://picsum.photos/300/200?random=5",
     },
     {
       title: "START2",
-      description: "Engage with interactive content that keeps you involved.",
+      description: "Caraousel 2 Content 2",
       image: "https://picsum.photos/300/200?random=6",
     },
     {
       title: "START3",
-      description: "Engage with interactive content that keeps you involved.",
+      description: "Caraousel 2 Content 3",
       image: "https://picsum.photos/300/200?random=7",
     },
     {
       title: "START4",
-      description: "Engage with interactive content that keeps you involved.",
+      description: "Caraousel 2 Content 4",
       image: "https://picsum.photos/300/200?random=8",
     },
   ],
   [
     {
-      title: "ACM1",
-      description: "Engage with interactive content that keeps you involved.",
+      title: "BEGIN1",
+      description: "Caraousel 3 Content 1",
       image: "https://picsum.photos/300/200?random=9",
     },
     {
-      title: "ACM2",
-      description: "Engage with interactive content that keeps you involved.",
+      title: "BEGIN2",
+      description: "Caraousel 3 Content 2",
       image: "https://picsum.photos/300/200?random=10",
     },
     {
-      title: "ACM3",
-      description: "Engage with interactive content that keeps you involved.",
+      title: "BEGIN3",
+      description: "Caraousel 3 Content 3",
       image: "https://picsum.photos/300/200?random=11",
     },
     {
-      title: "ACM4",
-      description: "Engage with interactive content that keeps you involved.",
+      title: "BEGIN4",
+      description: "Caraousel 3 Content 4",
       image: "https://picsum.photos/300/200?random=12",
     },
   ],
@@ -77,54 +73,79 @@ const images = [
 function InteractivePhoto() {
   const [currentSlider, setCurrentSlider] = useState(0);
   const [selectedImageIndex, setSelectedImageIndex] = useState(null);
+  const [selectedButton, setSelectedButton] = useState(null); // New state to track selected button
   const [isAnimating, setIsAnimating] = useState(false);
 
-  const handleImageSelect = (index) => {
-    setSelectedImageIndex(index === selectedImageIndex ? null : index);
-  };
-
   const getCurrentImage = () => {
-    if (currentSlider === 0 && selectedImageIndex === null) {
-      return images[currentSlider][3]; // Show "No Selection Image"
+    if (selectedImageIndex === null) {
+      return images[currentSlider][3]; // Show default image when no button is selected
     }
-    return (
-      images[currentSlider][selectedImageIndex] || images[currentSlider][3]
-    );
+    return images[currentSlider][selectedImageIndex];
   };
 
   const handleParentIndicatorClick = (index) => {
     setCurrentSlider(index);
     setSelectedImageIndex(null); // Reset selection when changing slider
+    setSelectedButton(null); // Reset button selection
+  };
+
+  // Handle button clicks with toggle feature
+  const handlePauseClick = () => {
+    if (selectedButton === "pause") {
+      setSelectedImageIndex(null); // Unselect button (reset to default)
+      setSelectedButton(null); // No button selected
+    } else {
+      setSelectedImageIndex(0); // Select first image
+      setSelectedButton("pause"); // Track pause button
+    }
+  };
+
+  const handlePlayClick = () => {
+    if (selectedButton === "play") {
+      setSelectedImageIndex(null); // Unselect button (reset to default)
+      setSelectedButton(null); // No button selected
+    } else {
+      setSelectedImageIndex(1); // Select second image
+      setSelectedButton("play"); // Track play button
+    }
+  };
+
+  const handleStopClick = () => {
+    if (selectedButton === "stop") {
+      setSelectedImageIndex(null); // Unselect button (reset to default)
+      setSelectedButton(null); // No button selected
+    } else {
+      setSelectedImageIndex(2); // Select third image
+      setSelectedButton("stop"); // Track stop button
+    }
   };
 
   // Automatically switch parent indicator
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlider((prevIndex) => (prevIndex + 1) % images.length);
-    }, 3000); // Change every 3 seconds
+    }, 4000);
 
-    // Clear the interval if a selection is made
     if (selectedImageIndex !== null) {
       clearInterval(timer);
     }
 
-    return () => clearInterval(timer); // Cleanup timer on unmount
+    return () => clearInterval(timer);
   }, [selectedImageIndex]);
 
-  // Handle animation on slider change
   useEffect(() => {
     setIsAnimating(true);
     const timer = setTimeout(() => {
       setIsAnimating(false);
-    }, 500); // Match duration of CSS animation
+    }, 500);
 
-    return () => clearTimeout(timer); // Cleanup timeout
+    return () => clearTimeout(timer);
   }, [currentSlider]);
 
   return (
     <>
       <section className="d-flex flex-column flex-md-row bg-white text-black">
-        <div className="interactivephoto-container col-md-6 mt-3">
+        <div className="interactivephoto-container col-md-5 mt-3">
           <div className="col-md-8">
             <h2>
               INTERACTIVE
@@ -140,60 +161,106 @@ function InteractivePhoto() {
           </div>
         </div>
 
-        <div className="container">
-          <div className="flex-container">
-            <div className="selector-container">
-              {Array.from({ length: 3 }, (_, index) => (
-                <span
-                  key={index}
-                  onClick={() => handleImageSelect(index)}
-                  className={`selector ${
-                    selectedImageIndex === index ? "selected" : "default"
-                  }`}
-                >
-                  {currentSlider === 0 && index === 0 && (
-                    <button className="btn pause">1</button>
-                  )}
-                  {currentSlider === 0 && index === 1 && (
-                    <button className="btn play">2</button>
-                  )}
-                  {currentSlider === 0 && index === 2 && (
-                    <button className="btn stop">3</button>
-                  )}
-                  {currentSlider === 1 && index === 0 && (
-                    <button className="btn pause">4</button>
-                  )}
-                  {currentSlider === 1 && index === 1 && (
-                    <button className="btn play">5</button>
-                  )}
-                  {currentSlider === 1 && index === 2 && (
-                    <button className="btn stop">6</button>
-                  )}
-                  {currentSlider === 2 && index === 0 && (
-                    <button className="btn pause">7</button>
-                  )}
-                  {currentSlider === 2 && index === 1 && (
-                    <button className="btn play">8</button>
-                  )}
-                  {currentSlider === 2 && index === 2 && (
-                    <button className="btn stop">9</button>
-                  )}
-                </span>
-              ))}
-            </div>
-            <div className="m-3">
-              <div
-                className="image"
-                style={{
-                  backgroundImage: `url('${getCurrentImage().image}')`,
-                }}
-              >
+        <div className="container col-md-*">
+          <div className="m-5 d-flex flex-row-reverse">
+            <div
+              className="image w-100"
+              style={{
+                backgroundImage: `url('${getCurrentImage().image}')`,
+              }}
+            >
+              {currentSlider === 0 && (
+                <div className="panel m-3">
+                  <button
+                    onClick={handlePauseClick}
+                    className={`panel-button ${
+                      selectedButton === "pause" ? "active-button" : ""
+                    }`}
+                  >
+                    <span className="icon">||</span>
+                  </button>
+                  <button
+                    onClick={handlePlayClick}
+                    className={`panel-button ${
+                      selectedButton === "play" ? "active-button" : ""
+                    }`}
+                  >
+                    <span className="icon">▶</span>
+                  </button>
+                  <button
+                    onClick={handleStopClick}
+                    className={`panel-button ${
+                      selectedButton === "stop" ? "active-button" : ""
+                    }`}
+                  >
+                    <span className="icon">■</span>
+                  </button>
+                </div>
+              )}
+              {currentSlider === 1 && (
+                <div className="panel m-3">
+                  <button
+                    onClick={handlePauseClick}
+                    className={`panel-button ${
+                      selectedButton === "pause" ? "active-button" : ""
+                    }`}
+                  >
+                    <span className="icon">||2</span>
+                  </button>
+                  <button
+                    onClick={handlePlayClick}
+                    className={`panel-button ${
+                      selectedButton === "play" ? "active-button" : ""
+                    }`}
+                  >
+                    <span className="icon">▶2</span>
+                  </button>
+                  <button
+                    onClick={handleStopClick}
+                    className={`panel-button ${
+                      selectedButton === "stop" ? "active-button" : ""
+                    }`}
+                  >
+                    <span className="icon">■2</span>
+                  </button>
+                </div>
+              )}
+              {currentSlider === 2 && (
+                <div className="panel m-3">
+                  <button
+                    onClick={handlePauseClick}
+                    className={`panel-button ${
+                      selectedButton === "pause" ? "active-button" : ""
+                    }`}
+                  >
+                    <span className="icon">||3</span>
+                  </button>
+                  <button
+                    onClick={handlePlayClick}
+                    className={`panel-button ${
+                      selectedButton === "play" ? "active-button" : ""
+                    }`}
+                  >
+                    <span className="icon">▶3</span>
+                  </button>
+                  <button
+                    onClick={handleStopClick}
+                    className={`panel-button ${
+                      selectedButton === "stop" ? "active-button" : ""
+                    }`}
+                  >
+                    <span className="icon">■3</span>
+                  </button>
+                </div>
+              )}
+              <div className="text-area">
                 <h2>{getCurrentImage().title}</h2>
                 <p>{getCurrentImage().description}</p>
               </div>
             </div>
           </div>
 
+          {/* Indicator */}
           <div className="indicator-container d-flex">
             {images.map((_, index) => (
               <span
@@ -211,11 +278,11 @@ function InteractivePhoto() {
           </div>
         </div>
       </section>
-      <div className="container col-md-5">
+      <div className="container mt-5 col-md-5">
         <h1>Because they love us</h1>
         <p className="">
           This is a dummy data that has been added just to display how the page
-          will look. Update the data once it is donefd
+          will look. Update the data once it is done.
         </p>
       </div>
     </>

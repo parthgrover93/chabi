@@ -50,17 +50,18 @@
   padding: 10px;
   border-radius: 70px !important;
   color: #fff;
-  height: 400px !important;
+  height: 500px !important;
   width: 150px !important;
   justify-content: flex-end;
   align-items: center;
-  transition: width 0.3s ease; /* Smooth transition for width */
+  transition: width 1s ease; /* Smooth transition */
   overflow: hidden; /* Hide overflow content */
 }
 
 /* Initially hide the description */
-.card p {
-  display: none; /* Hide description in collapsed state */
+.card p,
+.card h1 {
+  display: none;
 }
 
 /* Rotate title for vertical display */
@@ -68,18 +69,15 @@
   writing-mode: vertical-rl; /* Rotate title to vertical */
   transform: rotate(180deg); /* Adjust rotation for correct orientation */
   font-size: 2rem; /* Smaller font size for initial state */
-  transition: transform 0.3s ease; /* Smooth transition */
   color: #fff;
 }
 
 .card.active {
-  height: 200px;
   width: 400px !important;
 }
 
 /* Hover effect */
 .card:hover {
-  height: 200px;
   width: 400px !important;
 }
 
@@ -91,17 +89,34 @@
   color: white;
 }
 
+.card.active h1,
+.card:hover h1 {
+  display: block; /* Show description on hover */
+  color: white;
+  transition: width 2s ease; /* Smooth transition for width */
+}
+
 /* Change title to horizontal and show description on hover */
 .card.active h2,
 .card:hover h2 {
-  transform: rotate(270deg); /* Make title horizontal on hover */
-  align-self: start; /* Align title to the left */
-  font-size: 2rem; /* Adjust font size for title */
-  font-weight: bold; /* Make the title bold */
+  display: none;
 }
 
 .card img {
   width: 100%; /* Full width */
   height: auto; /* Maintain aspect ratio */
   border-radius: 10px; /* Match card's border radius */
+}
+
+.hover-area {
+  display: flex; /* Use flex to center the card */
+  justify-content: center; /* Center the card */
+  align-items: center; /* Center vertically */
+  margin: 10px; /* Add space around the hover area */
+  transition: transform 0.3s ease; /* Optional: Smooth transition effect */
+  overflow: auto; /* Hide overflow content */
+}
+
+.hover-area:hover {
+  transform: scale(1.07); /* Optional: Slightly scale up on hover */
 }

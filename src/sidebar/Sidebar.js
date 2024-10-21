@@ -3,27 +3,22 @@ import "./Sidebar.css";
 
 const Sidebar = () => {
   return (
-    <div className="media-container">
-      <div className="sidebar">
-        <button className="btn pause"></button>
-        <button className="btn play"></button>
-        <button className="btn stop"></button>
-      </div>
-      <div className="media-content">
-        <img
-          src="https://picsum.photos/300/200?random=1" // Replace with actual image URL
-          alt="Chat Experience"
-          className="media-image"
-        />
-        <div className="media-text">
-          <h2>One chat experience</h2>
-          <p>Help people navigate through difficult parts of your video.</p>
+    <div className="video-container">
+      <div className="image-section">
+        <div className="controls">
+          <div className="control-button play"></div>
+          <div className="control-button pause"></div>
+          <div className="control-button stop"></div>
         </div>
+        <img
+          src="https://picsum.photos/300/200?random=1"
+          alt="video-thumbnail"
+          className="image"
+        />
       </div>
-      <div className="pagination">
-        <span className="dot active"></span>
-        <span className="dot"></span>
-        <span className="dot"></span>
+      <div className="text-section">
+        <h2>One chat experience</h2>
+        <p>Help people navigate through difficult parts of your video.</p>
       </div>
     </div>
   );

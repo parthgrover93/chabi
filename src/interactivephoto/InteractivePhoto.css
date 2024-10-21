@@ -1,131 +1,143 @@
 .interactivephoto-container {
   padding: 50px;
 }
-
-.pageTitle {
-  font-size: larger;
-}
-
 .btn-design {
-  padding: 15px; /* Increase button size */
-  font-size: 1.4rem; /* Make font larger */
-  background-color: black;
-  margin-top: 20px;
-  color: white;
+  background-color: #000;
   border: none;
-  border-radius: 50px; /* Optional: Adjust border radius */
-  transition: background-color 0.3s; /* Smooth background color change */
-  width: 200px; /* Keep a consistent button width */
+  border-radius: 50px;
+  color: #fff;
+  font-size: 1.4rem;
+  margin-top: 20px;
+  padding: 15px;
+  transition: background-color 0.3s;
+  width: 200px;
 }
-
 .container {
   text-align: center;
 }
 
-.flex-container {
-  display: flex;
-  align-items: center;
-}
-
-.selector-container {
-  display: flex;
-  flex-direction: column;
-  margin-right: 20px;
-  border-radius: 10%;
-}
-
-.selector {
-  display: inline-block;
-  width: 50px;
-  height: 50px;
-  margin: 5px 0;
-  border-radius: 50%;
-  cursor: pointer;
-  line-height: 50px;
-  color: white;
-}
-
-.control-button {
-  border: none;
-  border-radius: 50%;
-  margin: 5px 0;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.vertical-bar:hover {
-  border-radius: 50%;
-  background-color: #0056b3; /* Darker on hover */
-}
-
-.sidebar {
-  position: absolute;
-  left: 20px;
-  top: 50%;
-  transform: translateY(-50%);
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.selector.selected {
-  background-color: rgb(129, 214, 114);
-}
-
-.selector.default {
-  background-color: lightgray;
-}
-
 .image {
-  position: relative; /* Ensure that child elements can be positioned relative to this */
-  width: 500px; /* Set a specific width */
-  height: 400px; /* Set a specific height */
-  background-size: cover; /* Cover the entire area */
-  background-position: center; /* Center the image */
-  border-radius: 10%;
-  display: flex; /* Use flexbox to manage layout */
-  flex-direction: column; /* Arrange children vertically */
-  justify-content: end; /* Push content to the bottom */
-  padding: 10px; /* Add some padding for better spacing */
   align-items: start;
-  color: white; /* Optional: Change text color for better contrast */
-  text-shadow: 1px 1px 2px black; /* Optional: Add shadow for readability */
+  background-size: cover;
+  border-radius: 75px;
+  color: #fff;
+  border-color: white;
+  display: flex;
+  flex-direction: column;
+  height: 500px;
+  justify-content: end;
+  width: 400px;
+  position: relative;
 }
 .indicator-container {
-  margin-top: 20px;
-  margin: 20px;
   align-content: center;
+  margin-left: 150px;
 }
-
 .indicator {
-  width: 15px; /* Default width */
-  height: 15px; /* Default height */
-  border-radius: 50%; /* Circular shape */
-  margin: 0 15px; /* Increased spacing between indicators */
-  background-color: gray; /* Default color */
+  background-color: gray;
+  border-radius: 50%;
   cursor: pointer;
-  transition: transform 0.3s ease, width 0.3s ease; /* Add width transition */
+  height: 12px;
+  margin: 0 12px;
+  transition: transform 0.3s ease, width 0.3s ease;
+  width: 12px;
 }
-
 .indicator.active {
-  background-color: black; /* Active state color */
-  transform: scale(1.5); /* Slightly enlarge the active indicator */
-  border-radius: 50%; /* Circular shape */
+  background-color: #000;
+  border-radius: 50%;
+  transform: scale(1.5);
 }
-
 .indicator.inactive {
-  background-color: lightgray;
+  background-color: #d3d3d3;
 }
-
 .scroll-animation {
-  animation: scrollIndicator 0.5s forwards; /* Scroll animation */
+  animation: scrollIndicator 0.5s forwards;
 }
-
 @keyframes scrollIndicator {
   0% {
     transform: translateY(0);
   }
-  100% {
-    transform: translateY(-10px); /* Move the indicator up */
+  to {
+    transform: translateY(-10px);
   }
+}
+
+.panel-button {
+  background-color: initial;
+  border: 2px solid #e1e7e4;
+  border-radius: 50%;
+  color: #e1e7e4;
+  cursor: pointer;
+  font-size: 16px;
+  height: 40px;
+  justify-content: center;
+  width: 40px;
+  margin: 5px;
+  padding: 20px;
+  align-items: center;
+  display: flex;
+}
+
+.icon {
+  font-weight: 700;
+}
+
+.active-button {
+  background-color: green;
+}
+
+.panel {
+  position: absolute;
+  top: 100px;
+  left: 0;
+  height: calc(100% - 50px); /* Full height minus 30px */
+  background-color: #154d3b;
+  border-radius: 25px;
+  display: flex;
+  flex-direction: column;
+  height: 180px;
+  padding: 10px;
+  width: 50px;
+  align-items: center;
+  z-index: 2;
+}
+
+/* Vertical strip area (left) */
+.image::before {
+  content: "";
+  position: absolute;
+  top: 80px; /* Leave 30px at the top */
+  left: 0;
+  width: 80px; /* 50px width for the strip */
+  height: calc(100% - 10px); /* Cover the rest of the height */
+  background-color: white; /* Background color for stripped area */
+  z-index: 2;
+  border-top-right-radius: 40px; /* Smooth curve at the top right of the strip */
+}
+
+/* Horizontal strip area (bottom) */
+.image::after {
+  content: "";
+  position: absolute;
+  bottom: 0px;
+  border-radius: 40px;
+  left: 150px; /* Leave 150px on the left */
+  width: calc(100% - 150px); /* Cover remaining width */
+  height: 50px; /* 50px height for the strip */
+  background-color: white;
+}
+
+.text-area {
+  position: absolute;
+  left: 150px;
+  width: calc(100% - 150px); /* Cover remaining space after 150px */
+  height: 90px;
+  background-color: white;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  font-size: 16px;
+  z-index: 2;
+  overflow-y: auto;
+  border-top-left-radius: 40px;
 }
